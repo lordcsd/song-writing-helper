@@ -1,5 +1,5 @@
 import { useState } from "react";
-import wordsArray from "../files/testWords";
+import wordsArray from "../files/wordsArray";
 
 export default function Home() {
   let [state, setState] = useState({
@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <main>
       <footer>
-        <div>
+        <div className="options">
           <section>
             <input onChange={loadAudio} type="file" />
           </section>
@@ -121,7 +121,8 @@ export default function Home() {
         <div className="screen">
           {state.actualWords.map((each, index) => {
             return (
-              <p key={index}
+              <p
+                key={index}
                 onClick={() => {
                   appendToSong(each);
                 }}
