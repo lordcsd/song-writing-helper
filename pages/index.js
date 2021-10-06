@@ -43,18 +43,20 @@ export default function Home() {
   };
 
   let searchWordsEndingWith = (phrase, length) => {
-    let words = [];
-    for (let i = 0; i < wordsArray.length; i++) {
-      if (
-        wordsArray[i].substring(
-          wordsArray[i].length - phrase.length,
-          wordsArray[i].length
-        ) == phrase
-      ) {
-        words.push(wordsArray[i]);
+    if (phrase.trim() != "") {
+      let words = [];
+      for (let i = 0; i < wordsArray.length; i++) {
+        if (
+          wordsArray[i].substring(
+            wordsArray[i].length - phrase.length,
+            wordsArray[i].length
+          ) == phrase
+        ) {
+          words.push(wordsArray[i]);
+        }
       }
+      setState({ ...state, actualWords: words });
     }
-    setState({ ...state, actualWords: words });
   };
 
   let handleInput = (e) => {
@@ -118,6 +120,10 @@ export default function Home() {
           </div>
           <audio controls src={state.audio}></audio>
         </div>
+      </footer>
+
+      <section className="workArea">
+        <textarea name="song" value={state.song} onChange={handleInput} />
         <div className="screen">
           {state.actualWords.map((each, index) => {
             return (
@@ -131,11 +137,7 @@ export default function Home() {
               </p>
             );
           })}
-        </div>
-      </footer>
-
-      <section>
-        <textarea name="song" value={state.song} onChange={handleInput} />
+        </div>{" "}
       </section>
     </main>
   );

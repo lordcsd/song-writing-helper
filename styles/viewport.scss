@@ -7,16 +7,36 @@ main {
   grid-template-rows: 2fr 1fr;
   height: 100vh;
   padding: 10px;
-  section {
+  .workArea {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap:1em;
+    .screen {
+      background-color: $bg2Dark;
+      padding: 10px;
+      border-radius: 5px;
+      height: 60vh;
+      overflow-y: scroll;
+      @include shadow();
+      p {
+        color: $white;
+        padding: 5px;
+        border-radius: 5px;
+        &:hover {
+          transition: 0.5s ease-in;
+          color: $bg2Dark;
+          background: $white;
+        }
+      }
+    }
     textarea {
-      width: $innerWidth;
+      // width: $innerWidth;
       height: 60vh;
       border-radius: 5px;
       border: none;
       background-color: $white;
       color: $black;
       padding: 10px;
-      font-size: 1.5em;
       @include shadow();
     }
   }
@@ -36,28 +56,10 @@ main {
       padding: 5px;
       border-radius: 3px;
     }
-    .options{
+    .options {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-    }
-    .screen {
-      background-color: $bg2Dark;
-      padding: 10px;
-      border-radius: 5px;
-      height: 33vh;
-      overflow-y: scroll;
-      @include shadow();
-      p {
-        color: $white;
-        padding: 5px;
-        border-radius: 5px;
-        &:hover {
-          transition: 0.5s ease-in;
-          color: $bg2Dark;
-          background: $white;
-        }
-      }
     }
   }
 }
