@@ -1,0 +1,11 @@
+$textArea: rgb(226, 226, 226);
+$white: rgb(223, 226, 232);
+$bg: rgb(255, 255, 255);
+$bg2: rgb(166, 171, 182);
+$bg2Dark: rgb(113, 124, 148);
+$black: rgb(60, 60, 60);
+$otherColor1: rgb(250, 48, 48);
+
+@mixin shadow() {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

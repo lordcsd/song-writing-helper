@@ -1,0 +1,57 @@
+$innerWidth: calc(100vw - 20px);
+$innerHeight: calc(100vh - 20px);
+
+main {
+  background: $bg2;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  height: 100vh;
+  padding: 10px;
+  section {
+    textarea {
+      width: $innerWidth;
+      height: 60vh;
+      border-radius: 5px;
+      border: none;
+      background-color: $bg2Dark;
+      color: $white;
+      padding: 10px;
+      @include shadow();
+    }
+  }
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    input {
+      margin: 3px;
+      padding: 5px;
+      border-radius: 3px;
+      border: none;
+    }
+    button {
+      color: $white;
+      background-color: $otherColor1;
+      border: none;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    .screen {
+      background-color: $bg2Dark;
+      padding: 10px;
+      border-radius: 5px;
+      height: 33vh;
+      overflow-y: scroll;
+      @include shadow();
+      p {
+        color: $white;
+        padding: 5px;
+        border-radius: 5px;
+        &:hover {
+          transition: 0.5s ease-in;
+          color: $bg2Dark;
+          background: $white;
+        }
+      }
+    }
+  }
+}
