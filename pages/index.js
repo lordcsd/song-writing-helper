@@ -1,5 +1,5 @@
 import { useState } from "react";
-import wordsArray from "./files/testWords";
+import wordsArray from "../files/testWords";
 
 export default function Home() {
   let [state, setState] = useState({
@@ -121,7 +121,7 @@ export default function Home() {
         <div className="screen">
           {state.actualWords.map((each, index) => {
             return (
-              <p
+              <p key={index}
                 onClick={() => {
                   appendToSong(each);
                 }}
