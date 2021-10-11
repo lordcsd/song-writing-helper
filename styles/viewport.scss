@@ -3,35 +3,38 @@ $innerHeight: calc(100vh - 20px);
 
 main {
   background: $bg2;
-  display: grid;
-  grid-template-rows: 2fr 1fr;
+  // display: grid;
+  // grid-template-rows: 2fr 1fr;
   height: 100vh;
   padding: 10px;
-  .workArea {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-gap:1em;
-    .screen {
-      background-color: $bg2Dark;
-      padding: 10px;
+  .screen {
+    background-color: $bg2Dark;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    margin: 10px 0;
+    height: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+    @include shadow();
+    p {
+      color: $white;
+      padding: 5px;
       border-radius: 5px;
-      height: 60vh;
-      overflow-y: scroll;
-      @include shadow();
-      p {
-        color: $white;
-        padding: 5px;
-        border-radius: 5px;
-        &:hover {
-          transition: 0.5s ease-in;
-          color: $bg2Dark;
-          background: $white;
-        }
+      background-color: $darkTransparent;
+      margin: 2px;
+      &:hover {
+        transition: 0.5s ease-in;
+        color: $bg2Dark;
+        background: $white;
       }
     }
+  }
+  .workArea {
     textarea {
       // width: $innerWidth;
       height: 60vh;
+      width: 100%;
       border-radius: 5px;
       border: none;
       background-color: $white;
@@ -41,8 +44,6 @@ main {
     }
   }
   footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     input {
       margin: 3px;
       padding: 5px;
@@ -61,5 +62,24 @@ main {
       flex-direction: column;
       justify-content: space-around;
     }
+  }
+}
+
+.toolBox {
+  display: flex;
+  flex-wrap: wrap;
+  .eachToolBox {
+    background: $darkTransparent;
+    margin: 3px;
+    border-radius: 5px;
+    p {
+      background: $black;
+      color: white;
+      padding: 3px;
+      margin: 0;
+    }
+  }
+  .numberInput {
+    width: 40px;
   }
 }

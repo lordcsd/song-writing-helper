@@ -1,3 +1,5 @@
+import { Switch } from "@material-ui/core";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import { useState } from "react";
 import wordsArray from "../files/wordsArray";
 
@@ -80,34 +82,58 @@ export default function Home() {
   return (
     <main>
       <footer>
-        <div className="options">
-          <section>
+        <div className="toolBox">
+          <div className="eachToolBox">
+            <p>Select Audio</p>
             <input onChange={loadAudio} type="file" />
-          </section>
-          <div>
-            <input
-              type="number"
-              value={state.wordLength}
-              name="wordLength"
-              onChange={handleInput}
-            />
-            <span>Use word length</span>
           </div>
-          <div>
+          <div className="eachToolBox">
+            <p>Word Length</p>
+            <div>
+              <label>Use Length</label>
+              <Switch />
+            </div>
+            <div>
+              <KeyboardArrowUp
+                onClick={() => {
+                  setState({ ...state, wordLength: state.wordLength + 1 });
+                }}
+              />
+              <span>{state.wordLength}</span>
+
+              <KeyboardArrowDown
+                onClick={() => {
+                  setState({
+                    ...state,
+                    wordLength:
+                      state.wordLength > 0
+                        ? state.wordLength--
+                        : state.wordLength,
+                  });
+                }}
+              />
+            </div>
+          </div>
+          <div className="eachToolBox">
+            <p>Get Random Words</p>
             <input
               placeholder="number of words"
               value={state.numberOfRandomWords}
               type="number"
               name="numberOfRandomWords"
               onChange={handleInput}
+              className="numberInput"
             />
-            <button
-              onClick={() => generateRandomWords(state.numberOfRandomWords)}
-            >
-              Randomize
-            </button>
+            <div>
+              <button
+                onClick={() => generateRandomWords(state.numberOfRandomWords)}
+              >
+                Get {state.numberOfRandomWords} Random words
+              </button>
+            </div>
           </div>
-          <div>
+          <div className="eachToolBox">
+            <p>Get Words Ending With</p>
             <input
               placeholder="words ending with"
               value={state.searchWord}
@@ -118,26 +144,27 @@ export default function Home() {
               Refresh
             </button>
           </div>
-          <audio controls src={state.audio}></audio>
+          <div className="eachToolBox">
+            <audio controls src={state.audio}></audio>
+          </div>
         </div>
       </footer>
-
+      <div className="screen">
+        {state.actualWords.map((each, index) => {
+          return (
+            <p
+              key={index}
+              onClick={() => {
+                appendToSong(each);
+              }}
+            >
+              {each}
+            </p>
+          );
+        })}
+      </div>{" "}
       <section className="workArea">
         <textarea name="song" value={state.song} onChange={handleInput} />
-        <div className="screen">
-          {state.actualWords.map((each, index) => {
-            return (
-              <p
-                key={index}
-                onClick={() => {
-                  appendToSong(each);
-                }}
-              >
-                {each}
-              </p>
-            );
-          })}
-        </div>{" "}
       </section>
     </main>
   );
